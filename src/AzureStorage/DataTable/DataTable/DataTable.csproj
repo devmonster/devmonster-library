@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<RootNamespace>Devmonster.AzureStorage.DataTable</RootNamespace>
+		<AssemblyName>Devmonster.AzureStorage.DataTable</AssemblyName>
+		<Version>1.0.0.0</Version>		
+		<ExampleLang>3</ExampleLang>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Description>Library for connecting to an Azure DataTable</Description>
+		<Company>Devmonster</Company>
+		<RepositoryType>git</RepositoryType>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Azure.Data.Tables" Version="12.8.0" />
+		<PackageReference Include="Azure.Storage.Common" Version="12.14.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+	</ItemGroup>
+</Project>
