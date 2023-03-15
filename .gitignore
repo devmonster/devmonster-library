@@ -362,3 +362,4 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 local.settings.json
+/src/AzureStorage/Queue/Queue.Test/locla.settings.json
