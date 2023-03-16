@@ -1,7 +1,7 @@
 # This workflow will build a .NET project
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 
-name: .NET
+name: Build Azure Queue Library
 
 on:
   workflow_dispatch:
@@ -36,7 +36,9 @@ jobs:
       id: package_version
       uses: KageKirin/get-csproj-version@v1.0.0
       with:        
-        file: src/AzureStorage/Queue/Queue/Queue.csproj      
+        file: src/AzureStorage/Queue/Queue/Queue.csproj
+    - name: Check Value
+      run: echo ${{ steps.package_version }}
     - name: Publish to Nuget
-      run: dotnet nuget push --source https://api.nuget.org --api-key ${{secrets.NUGET_API_KEY}} 'src/AzureStorage/Queue/Queue/bin/Release/Devmonster.AzureStorage.Queue.${{ steps.test.package_version.version }}.nupkg'
+      run: dotnet nuget push --source https://api.nuget.org --api-key ${{secrets.NUGET_API_KEY}} 'src/AzureStorage/Queue/Queue/bin/Release/Devmonster.AzureStorage.Queue.${{ steps.package_version.version }}.nupkg'
       
