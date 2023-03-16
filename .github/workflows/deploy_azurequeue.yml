@@ -43,5 +43,5 @@ jobs:
       run: |
         echo outputs: $outputs
     - name: Publish to Nuget
-      run: dotnet nuget push --source https://api.nuget.org --api-key ${{secrets.NUGET_API_KEY}} 'src/AzureStorage/Queue/Queue/bin/Release/Devmonster.AzureStorage.Queue.${{ steps.package_version.version }}.nupkg'
+      run: dotnet nuget push --source https://api.nuget.org --api-key ${{secrets.NUGET_API_KEY}} 'src/AzureStorage/Queue/Queue/bin/Release/Devmonster.AzureStorage.Queue.${ outputs.outputs.version }.nupkg'
       
