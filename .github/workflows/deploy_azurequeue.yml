@@ -4,10 +4,14 @@
 name: .NET
 
 on:
+  workflow_dispatch:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+
+env:
+   VERISON: 0
 
 jobs:
   build:
@@ -24,13 +28,11 @@ jobs:
       run: dotnet restore src/AzureStorage/Queue/Queue/Queue.csproj
     - name: Build
       run: dotnet build src/AzureStorage/Queue/Queue/Queue.csproj -c Release --no-restore
-    - name: Publish NuGet      
-      uses: brandedoutcast/publish-nuget@v2.5.5
-      with:
-        # Filepath of the project to be packaged, relative to root of repository
-        PROJECT_FILE_PATH: src/AzureStorage/Queue/Queue/Queue.csproj
-        # NuGet package id, used for version detection & defaults to project name
-        PACKAGE_NAME: Devmonster.AzureStorage.Queue        
-        NUGET_KEY: ${{secrets.NUGET_API_KEY}}
-        # NuGet server uri hosting the packages, defaults to https://api.nuget.org
-        NUGET_SOURCE: https://api.nuget.org        
+    - name: Pack
+      run: dotnet pack src/AzureStorage/Queue/Queue/Queue.csproj
+    - name: Extract version number from .csproj
+      id: version
+      run: echo "::set-output name=version::$(dotnet list package | grep 'PackageReference.*<YourPackageName>' | awk '{print $2}')"     
+    - name: Publish to Nuget
+      run: dotnet nuget push --source https://api.nuget.org --api-key ${{secrets.NUGET_API_KEY}} 'src/AzureStorage/Queue/Queue/bin/Release/Devmonster.AzureStorage.Queue.${{ steps.version.outputs.version }}.nupkg'
+      
