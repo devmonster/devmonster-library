@@ -5,10 +5,6 @@ name: Build Azure Queue Library
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
 env:
    version: 0
