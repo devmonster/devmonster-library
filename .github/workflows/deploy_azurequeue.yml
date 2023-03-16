@@ -11,7 +11,7 @@ on:
     branches: [ "main" ]
 
 env:
-   VERISON: 0
+   version: "0"
 
 jobs:
   build:
@@ -39,9 +39,9 @@ jobs:
         file: src/AzureStorage/Queue/Queue/Queue.csproj
     - name: Check Value
       env:
-        outputs: ${{ toJSON(steps.package_version) }}
+        version: ${{ toJSON(steps.package_version).outputs.version }}
       run: |
-        echo outputs: $outputs
+        echo version: $version
     - name: Publish to Nuget
       run: dotnet nuget push --source https://api.nuget.org --api-key ${{secrets.NUGET_API_KEY}} 'src/AzureStorage/Queue/Queue/bin/Release/Devmonster.AzureStorage.Queue.${{ outputs.outputs.version }}.nupkg'
       
