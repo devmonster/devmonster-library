@@ -17,7 +17,9 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    defaults:
+      run:
+        working-directory: src/AzureStorage/Queue/Queue
     steps:
     - uses: actions/checkout@v3
     - name: Setup .NET
@@ -25,14 +27,16 @@ jobs:
       with:
         dotnet-version: 7.0.x
     - name: Restore dependencies
-      run: dotnet restore src/AzureStorage/Queue/Queue/Queue.csproj
+      run: dotnet restore Queue.csproj
     - name: Dotnet Build
-      run: dotnet build src/AzureStorage/Queue/Queue/Queue.csproj -c Release --no-restore
+      run: dotnet build Queue.csproj -c Release --no-restore
     - name: Dotnet Pack
-      run: dotnet pack -c Release src/AzureStorage/Queue/Queue/Queue.csproj
-    - name: Extract version number from .csproj
-      id: version
-      run: echo "::set-output name=version::$(dotnet list package | grep 'PackageReference.*<YourPackageName>' | awk '{print $2}')"     
+      run: dotnet pack -c Release Queue.csproj
+    - name: Get CSProj Version      
+      id: package_version
+      uses: KageKirin/get-csproj-version@v1.0.0
+      with:        
+        file: Queue.csproj      
     - name: Publish to Nuget
-      run: dotnet nuget push --source https://api.nuget.org --api-key ${{secrets.NUGET_API_KEY}} 'src/AzureStorage/Queue/Queue/bin/Release/Devmonster.AzureStorage.Queue.${{ steps.version.outputs.version }}.nupkg'
+      run: dotnet nuget push --source https://api.nuget.org --api-key ${{secrets.NUGET_API_KEY}} 'src/AzureStorage/Queue/Queue/bin/Release/Devmonster.AzureStorage.Queue.${{ steps.package_version.version }}.nupkg'
       
