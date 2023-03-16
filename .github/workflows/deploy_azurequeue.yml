@@ -38,7 +38,10 @@ jobs:
       with:        
         file: src/AzureStorage/Queue/Queue/Queue.csproj
     - name: Check Value
-      run: echo ${{ toJSON(steps.package_version) }}
+      env:
+        outputs: ${{ toJSON(steps.package_version) }}
+      run: |
+        echo outputs: $outputs
     - name: Publish to Nuget
       run: dotnet nuget push --source https://api.nuget.org --api-key ${{secrets.NUGET_API_KEY}} 'src/AzureStorage/Queue/Queue/bin/Release/Devmonster.AzureStorage.Queue.${{ steps.package_version.version }}.nupkg'
       
