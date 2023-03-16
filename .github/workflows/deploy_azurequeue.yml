@@ -39,7 +39,7 @@ jobs:
         file: src/AzureStorage/Queue/Queue/Queue.csproj
     - name: Check Value
       env:
-        version: ${{ toJSON(steps.package_version).outputs.version }}
+        version: ${{ toJSON(steps.package_version) }}
       run: |
         echo version: $version
     - name: Publish to Nuget
