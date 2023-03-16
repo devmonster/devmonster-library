@@ -5,12 +5,13 @@
 		<ImplicitUsings>enable</ImplicitUsings>		
 		<RootNamespace>Devmonster.Core.LoggerFluent.Models</RootNamespace>
 		<AssemblyName>Devmonster.Core.LoggerFluent.Models</AssemblyName>
-		<Version>1.0.0</Version>
+		<Version>1.0.1</Version>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<Description>LoggerFluent Models</Description>
 		<Company>Devmonster</Company>
 		<Authors>MMiano</Authors>
-		<RepositoryType>git</RepositoryType>
+		<RepositoryType>git</RepositoryType>		
+		<PackageReleaseNotes>Updated Namespace</PackageReleaseNotes>
 	</PropertyGroup>
 
 	<ItemGroup>

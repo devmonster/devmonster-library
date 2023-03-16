@@ -1,4 +1,4 @@
-﻿namespace Devmonster.LoggerFluent.Models;
+﻿namespace Devmonster.Core.LoggerFluent.Models;
 
 public class LogEntry
 {

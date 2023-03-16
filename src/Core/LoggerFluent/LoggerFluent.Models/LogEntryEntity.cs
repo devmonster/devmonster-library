@@ -1,7 +1,7 @@
 ﻿using Azure;
 using Azure.Data.Tables;
 
-namespace Devmonster.LoggerFluent.Models;
+namespace Devmonster.Core.LoggerFluent.Models;
 
 public class LogEntryEntity : ITableEntity
 {
