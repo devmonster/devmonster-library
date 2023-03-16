@@ -4,8 +4,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<RootNamespace>Devmonster.AzureStorage.DataTable</RootNamespace>
 		<AssemblyName>Devmonster.AzureStorage.DataTable</AssemblyName>
-		<Version>1.0.0.0</Version>		
-		<ExampleLang>3</ExampleLang>
+		<Version>1.0.0</Version>				
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<Description>Library for connecting to an Azure DataTable</Description>
 		<Company>Devmonster</Company>
