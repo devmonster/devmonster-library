@@ -13,6 +13,7 @@
 		<Company>Devmonster</Company>
 		<Authors>MMiano</Authors>				
 		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/devmonster/devmonster-library/tree/main/src/Core/SuperBasicAuth</RepositoryUrl>
 	</PropertyGroup>
 
 	<ItemGroup>
