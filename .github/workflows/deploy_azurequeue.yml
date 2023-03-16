@@ -26,10 +26,10 @@ jobs:
         dotnet-version: 7.0.x
     - name: Restore dependencies
       run: dotnet restore src/AzureStorage/Queue/Queue/Queue.csproj
-    - name: Build
+    - name: Dotnet Build
       run: dotnet build src/AzureStorage/Queue/Queue/Queue.csproj -c Release --no-restore
-    - name: Pack
-      run: dotnet pack src/AzureStorage/Queue/Queue/Queue.csproj
+    - name: Dotnet Pack
+      run: dotnet pack -c Release src/AzureStorage/Queue/Queue/Queue.csproj
     - name: Extract version number from .csproj
       id: version
       run: echo "::set-output name=version::$(dotnet list package | grep 'PackageReference.*<YourPackageName>' | awk '{print $2}')"     
