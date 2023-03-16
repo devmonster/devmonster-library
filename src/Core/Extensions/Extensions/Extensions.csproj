@@ -12,7 +12,9 @@
 		<Description>Simple Extension Methods</Description>				
 		<Company>Devmonster</Company>
 		<Authors>MMiano</Authors>
-		<RepositoryType>git</RepositoryType>
+		<RepositoryType>git</RepositoryType>			
+		<RepositoryUrl>https://github.com/devmonster/devmonster-library/tree/main/src/Core/Extensions</RepositoryUrl>
+		
 	</PropertyGroup>
 
 </Project>
