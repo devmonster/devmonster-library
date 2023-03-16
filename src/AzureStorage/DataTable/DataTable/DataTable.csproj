@@ -6,8 +6,10 @@
 		<AssemblyName>Devmonster.AzureStorage.DataTable</AssemblyName>
 		<Version>1.0.0</Version>				
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<Description>Library for connecting to an Azure DataTable</Description>
+		<Description>Library for connecting to an Azure DataTable</Description>				
 		<Company>Devmonster</Company>
+		<Authors>MMiano</Authors>		
+		<RepositoryUrl>https://github.com/devmonster/devmonster-library/tree/main/src/AzureStorage/Queue</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 	</PropertyGroup>
 	<ItemGroup>
