@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggerFluent", "LoggerFluent\LoggerFluent.csproj", "{353C886F-430E-4A03-A493-AD31194961E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggerFluent", "LoggerFluent\LoggerFluent.csproj", "{353C886F-430E-4A03-A493-AD31194961E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggerFluent.Models", "LoggerFluent.Models\LoggerFluent.Models.csproj", "{7595B10C-B11E-4940-AC3E-9D5DFBA34C35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggerFluent.Models", "LoggerFluent.Models\LoggerFluent.Models.csproj", "{7595B10C-B11E-4940-AC3E-9D5DFBA34C35}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggerFluent.ReferenceFunction", "Devmonster.Core.LoggerFluent.ReferenceFunction\LoggerFluent.ReferenceFunction.csproj", "{2F0D0D8F-689B-419B-B574-380FB7FF7F19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggerFluent.Test", "Devmonster.Core.LoggerFluent.Test\LoggerFluent.Test.csproj", "{1F45CAA0-762B-4833-9158-D197F5E38906}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{7595B10C-B11E-4940-AC3E-9D5DFBA34C35}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7595B10C-B11E-4940-AC3E-9D5DFBA34C35}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7595B10C-B11E-4940-AC3E-9D5DFBA34C35}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F0D0D8F-689B-419B-B574-380FB7FF7F19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F0D0D8F-689B-419B-B574-380FB7FF7F19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F0D0D8F-689B-419B-B574-380FB7FF7F19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F0D0D8F-689B-419B-B574-380FB7FF7F19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F45CAA0-762B-4833-9158-D197F5E38906}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F45CAA0-762B-4833-9158-D197F5E38906}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F45CAA0-762B-4833-9158-D197F5E38906}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F45CAA0-762B-4833-9158-D197F5E38906}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

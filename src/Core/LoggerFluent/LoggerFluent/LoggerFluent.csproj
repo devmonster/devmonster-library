@@ -3,8 +3,7 @@
 	<PropertyGroup>
 		<TargetFrameworks>net6.0;net7.0</TargetFrameworks>
 		<LangVersion>10.0</LangVersion>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>		
 		<RootNamespace>Devmonster.Core.LoggerFluent</RootNamespace>
 		<AssemblyName>Devmonster.Core.LoggerFluent</AssemblyName>
 
@@ -30,6 +29,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Devmonster.Core.Extensions" Version="1.0.0" />
+		<PackageReference Include="Devmonster.Core.LoggerFluent.Models" Version="1.0.1" />
 		<PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
 	</ItemGroup>
 
