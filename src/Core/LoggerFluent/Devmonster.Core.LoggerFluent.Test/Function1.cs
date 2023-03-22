@@ -1,4 +1,4 @@
-using Devmonster.Core.LoggerFluent.LoggerFluent;
+using Devmonster.Core.LoggerFluent;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Logging;
 

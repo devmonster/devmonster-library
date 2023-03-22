@@ -1,4 +1,4 @@
-using Devmonster.Core.LoggerFluent.LoggerFluent;
+using Devmonster.Core.LoggerFluent;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;

@@ -1,7 +1,7 @@
 ﻿using Devmonster.AzureStorage.DataTable;
 using Devmonster.AzureStorage.Queue;
 using Devmonster.Core.LoggerFluent.Infrastructure;
-using Devmonster.Core.LoggerFluent.LoggerFluent;
+using Devmonster.Core.LoggerFluent;
 using Devmonster.Core.LoggerFluent.Test;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
@@ -19,7 +19,7 @@ namespace Devmonster.Core.LoggerFluent.Test
                 .AddEnvironmentVariables()
                 .Build();
 
-            builder.Services.AddTransient<ILoggerFluent, LoggerFluent.LoggerFluent>();
+            builder.Services.AddTransient<ILoggerFluent, LoggerFluent>();
             builder.Services.AddTransient<IQueueRepository, QueueRepository>();
 
             builder.Services.ConfigureLoggerFluent(o =>

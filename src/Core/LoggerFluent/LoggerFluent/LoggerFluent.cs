@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace Devmonster.Core.LoggerFluent.LoggerFluent;
+namespace Devmonster.Core.LoggerFluent;
 
 #region Interface
 public interface ILoggerFluent
