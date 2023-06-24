@@ -1,9 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net5.0;net6.0;net7.0</TargetFrameworks>
+		<TargetFrameworks>net48;net5.0;net6.0;net7.0</TargetFrameworks>
 		<LangVersion>10.0</LangVersion>
-		<ImplicitUsings>enable</ImplicitUsings>
+		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<RootNamespace>Devmonster.Core.Extensions</RootNamespace>		
 		<AssemblyName>Devmonster.Core.Extensions</AssemblyName>

@@ -1,4 +1,6 @@
-﻿namespace Devmonster.Core.Extensions.Dictionary
+﻿using System.Collections.Generic;
+
+namespace Devmonster.Core.Extensions.Dictionary
 {
     public static class DictionaryExtensions
     {

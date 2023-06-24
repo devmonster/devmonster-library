@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace Devmonster.Core.Extensions.String
 {
     public static class StringExtensions
