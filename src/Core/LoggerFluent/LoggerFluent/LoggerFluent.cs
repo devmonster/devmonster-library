@@ -318,6 +318,8 @@ public sealed class LoggerFluent : ILoggerFluent, ILoggerConfigure, ILoggerData
             Category = _category,
             ClientID = _clientID,
             Exception = _exception,
+            Url = _url,
+            Headers = _headers,
             FunctionExecutionID = _executionID
         };
 
@@ -394,6 +396,8 @@ public sealed class LoggerFluent : ILoggerFluent, ILoggerConfigure, ILoggerData
         _category = string.Empty;
         _executionID = string.Empty;
         _exception = string.Empty;
+        _url = string.Empty;
+        
 
         hasDateSet = false;
     }
