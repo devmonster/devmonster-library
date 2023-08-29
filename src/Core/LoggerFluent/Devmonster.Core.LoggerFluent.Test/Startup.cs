@@ -24,7 +24,7 @@ namespace Devmonster.Core.LoggerFluent.Test
 
             builder.Services.ConfigureLoggerFluent(o =>
             {
-                o.QueueName = "test";
+                o.QueueName = "eventlog";
                 o.ConnectionString = config["ConnectionString"];
             });
 

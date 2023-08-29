@@ -12,11 +12,13 @@
 			<CopyToPublishDirectory>Never</CopyToPublishDirectory>
 		</None>
 	</ItemGroup>
-	<ItemGroup>
-		<PackageReference Include="Devmonster.Core.LoggerFluent.Models" Version="1.0.1" />
+	<ItemGroup>		
 		<PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.1.0" />
 		<PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Storage" Version="5.0.1" />
 		<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="6.0.0" />
 		<PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.1.3" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\LoggerFluent.Models\LoggerFluent.Models.csproj" />
 	</ItemGroup>
 </Project>

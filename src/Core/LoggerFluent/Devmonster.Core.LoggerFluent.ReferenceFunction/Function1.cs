@@ -29,7 +29,7 @@ namespace Devmonster.Core.LoggerFluent.ReferenceFunction
 
         }
         [FunctionName("Function1")]
-        public async Task Run([QueueTrigger("EventLog", Connection = "")]string queueItem, ILogger log)
+        public async Task Run([QueueTrigger("eventlog", Connection = "")]string queueItem, ILogger log)
         {
             log.LogInformation($"C# Queue trigger function processed: {queueItem}");
 
@@ -40,9 +40,9 @@ namespace Devmonster.Core.LoggerFluent.ReferenceFunction
                 DateStamp = logEntry.DateStamp.ToUniversalTime(),
                 Category = logEntry.Category,
                 CorrelationId = logEntry.CorrelationId,
-                PayloadSent = logEntry.PayloadSent?.TrimToLength(maxStringLength),
-                RelevantData = JsonConvert.SerializeObject(logEntry.RelevantData).TrimToLength(maxStringLength),
-                ResponseReceived = logEntry.ResponseReceived?.TrimToLength(maxStringLength),
+                PayloadSent = logEntry.PayloadSent,
+                RelevantData = logEntry.RelevantData,
+                ResponseReceived = logEntry.ResponseReceived,
                 LogLevel = logEntry.LogLevel,
                 Message = logEntry.Message?.TrimToLength(maxStringLength),
                 RelevantId = logEntry.RelevantId,
@@ -65,7 +65,7 @@ namespace Devmonster.Core.LoggerFluent.ReferenceFunction
                 string errorCorrelationId = logEntry.CorrelationId == string.Empty ? Guid.NewGuid().ToString() : logEntry.CorrelationId;
                 LogEntryEntity errorEntry = new()
                 {
-                    DateStamp = DateTime.Now,
+                    DateStamp = DateTime.Now.ToUniversalTime(),
                     Category = "Logger Error",
                     CorrelationId = errorCorrelationId,
                     PayloadSent = JsonConvert.SerializeObject(logEntry),

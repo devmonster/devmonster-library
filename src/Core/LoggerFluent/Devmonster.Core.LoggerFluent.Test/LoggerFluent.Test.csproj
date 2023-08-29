@@ -4,6 +4,7 @@
 		<AzureFunctionsVersion>v4</AzureFunctionsVersion>
 	</PropertyGroup>
 	<ItemGroup>
+		<PackageReference Include="Flurl.Http" Version="3.2.4" />
 		<PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.1.1" />
 	</ItemGroup>
 	<ItemGroup>
