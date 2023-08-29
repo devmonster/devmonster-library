@@ -51,6 +51,7 @@ namespace Devmonster.Core.LoggerFluent.Test
                 logger.Info("Sending Response")
                     .Message(responseMessage)
                     .Payload(data)
+                    .RelevantId("3393")
                     .AdditionalData(new { name = "data1", food = "cookies" })
                     .Response(new { response = "ok", message = "the response is successfulley"})
                     .Log();

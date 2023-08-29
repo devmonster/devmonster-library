@@ -171,6 +171,11 @@ public interface ILoggerData
 
     ILoggerData Headers(object headers);
 
+    /// <summary>
+    /// Adds Relevant ID to the Log
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     ILoggerData RelevantId(string id);
 
     /// <summary>
