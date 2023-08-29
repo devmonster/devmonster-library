@@ -142,14 +142,23 @@ public interface ILoggerData
     /// </summary>
     /// <param name="payloadSent"></param>
     /// <returns></returns>
-    ILoggerData Payload(string payloadSent);
+    ILoggerData Payload(object payloadSent);
 
     /// <summary>
     /// Sets the value of the API response that will be written on the log entry
     /// </summary>
     /// <param name="response"></param>
     /// <returns></returns>
-    ILoggerData Response(string response);
+    ILoggerData Response(object response);
+
+    /// <summary>
+    /// Sets the value of the API response that will be written on the log entry
+    /// </summary>
+    /// <param name="response"></param>
+    /// <param name="maxCharacters">Maximum characters to retain in the log</param>
+    /// <returns></returns>
+    ILoggerData Response(object response, int maxCharacters);
+    
 
     /// <summary>
     /// Sets a custom object that will be written on the log entry
@@ -167,6 +176,9 @@ public interface ILoggerData
     /// </summary>    
     ILoggerData Exception(Exception ex);
 
+    /// <summary>
+    /// Adds a Message to the log
+    /// </summary>    
     ILoggerData Message(string message);
 
     /// <summary>
@@ -239,6 +251,17 @@ public sealed class LoggerFluent : ILoggerFluent, ILoggerConfigure, ILoggerData
         var loggerInstance = new LoggerFluent(_queue, _options);
         return loggerInstance.BeginEntry(correlationId, category);
     }
+    public ILoggerFluent BeginEntry(string correlationId, [CallerMemberName] string category = "")
+    {
+        _correlationId = correlationId;
+
+        if (string.IsNullOrEmpty(_category))
+        {
+            _category = category;
+        }
+
+        return this;
+    }
 
     public ILoggerData AdditionalData(object data)
     {
@@ -253,17 +276,7 @@ public sealed class LoggerFluent : ILoggerFluent, ILoggerConfigure, ILoggerData
         return this;
     }
 
-    public ILoggerFluent BeginEntry(string correlationId, [CallerMemberName] string category = "")
-    {
-        _correlationId = correlationId;
 
-        if (string.IsNullOrEmpty(_category))
-        {
-            _category = category;
-        }
-
-        return this;
-    }
 
     public ILoggerFluent FunctionExecutionID(string executionID)
     {
@@ -272,22 +285,6 @@ public sealed class LoggerFluent : ILoggerFluent, ILoggerConfigure, ILoggerData
         return this;
     }
 
-    //public ILoggerAction BeginWrite(string level)
-    //{
-    //    // Reset the values so it does not bleed into other logs
-
-    //    // Set this to False so that we reset it 
-    //    // if this is set to false, the logger uses the DateTime.Now
-    //    hasDateSet = false;
-
-    //    _payload = _relevantId = _response = _message = string.Empty;
-    //    _data = null;
-
-
-    //    // Set the level
-    //    _level = level;
-    //    return this;
-    //}
 
     public ILoggerData DateStamp(DateTime stamp)
     {
@@ -312,8 +309,8 @@ public sealed class LoggerFluent : ILoggerFluent, ILoggerConfigure, ILoggerData
             LogLevel = _level,
             RelevantId = _relevantId,
             PayloadSent = _payload,
-            ResponseReceived = _response?.TrimToLength(5000),
-            RelevantData = _data?.TrimToLength(5000),
+            ResponseReceived = _response,
+            RelevantData = _data,
             Message = _message,
             Category = _category,
             ClientID = _clientID,
@@ -339,9 +336,17 @@ public sealed class LoggerFluent : ILoggerFluent, ILoggerConfigure, ILoggerData
         return this;
     }
 
-    public ILoggerData Payload(string payloadSent)
+    public ILoggerData Payload(object payloadSent)
     {
-        _payload = payloadSent;
+        var jsonFormattingSettings = new JsonSerializerSettings()
+        {
+            ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+        };
+
+        string payloadString = JsonConvert.SerializeObject(payloadSent, jsonFormattingSettings);
+
+
+        _payload = payloadString;
         return this;
     }
 
@@ -351,9 +356,21 @@ public sealed class LoggerFluent : ILoggerFluent, ILoggerConfigure, ILoggerData
         return this;
     }
 
-    public ILoggerData Response(string response)
+    public ILoggerData Response(object response)
     {
-        _response = response;
+        return Response(response, int.MaxValue);
+    }
+
+    public ILoggerData Response(object response, int maxCharacters)
+    {
+        var jsonFormattingSettings = new JsonSerializerSettings()
+        {
+            ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+        };
+
+        string dataString = JsonConvert.SerializeObject(response, jsonFormattingSettings);
+
+        _response = dataString.TrimToLength(maxCharacters);
         return this;
     }
 

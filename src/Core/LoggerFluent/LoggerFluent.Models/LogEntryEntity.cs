@@ -14,9 +14,9 @@ public class LogEntryEntity : ITableEntity
     public string RelevantId { get; set; }
 
     public string Message { get; set; }
-    public string PayloadSent { get; set; }
+    public object PayloadSent { get; set; }
     public string ResponseReceived { get; set; }
-    public string RelevantData { get; set; }
+    public object RelevantData { get; set; }
     public string Headers { get; set; }
     public string Url { get; set; }
     public string ClientID { get; set; }

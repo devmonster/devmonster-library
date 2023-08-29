@@ -7,7 +7,7 @@
 		<RootNamespace>Devmonster.Core.LoggerFluent</RootNamespace>
 		<AssemblyName>Devmonster.Core.LoggerFluent</AssemblyName>
 
-		<Version>1.0.2</Version>
+		<Version>1.1.0</Version>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<Description>LoggerFluent Library</Description>
 		<Company>Devmonster</Company>
@@ -29,9 +29,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Devmonster.Core.Extensions" Version="1.0.0" />
-		<PackageReference Include="Devmonster.Core.LoggerFluent.Models" Version="1.0.1" />
+		<PackageReference Include="Devmonster.Core.Extensions" Version="1.0.0" />		
 		<PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\LoggerFluent.Models\LoggerFluent.Models.csproj" />
 	</ItemGroup>
 
 </Project>

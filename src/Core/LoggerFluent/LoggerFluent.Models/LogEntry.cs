@@ -20,7 +20,7 @@ public class LogEntry
     public string RelevantId { get; set; }
 
     public string Message { get; set; }
-    public string PayloadSent { get; set; }
+    public object PayloadSent { get; set; }
     public string ResponseReceived { get; set; }
     public object RelevantData { get; set; }
     public object Headers { get; set; }
