@@ -171,6 +171,8 @@ public interface ILoggerData
 
     ILoggerData Headers(object headers);
 
+    ILoggerData RelevantId(string id);
+
     /// <summary>
     /// Adds an Exception to the log, which will be automatically Unfurled
     /// </summary>    
