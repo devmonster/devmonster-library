@@ -421,7 +421,7 @@ public sealed class LoggerFluent : ILoggerFluent, ILoggerConfigure, ILoggerData
         _executionID = string.Empty;
         _exception = string.Empty;
         _url = string.Empty;
-        
+        _headers = string.Empty;
 
         hasDateSet = false;
     }
@@ -460,7 +460,9 @@ public sealed class LoggerFluent : ILoggerFluent, ILoggerConfigure, ILoggerData
     public void ClearTransaction()
     {
         // Clear the repeating part of the log so it can be reused
-        _payload = _response = _message = _level = _exception = string.Empty;
+        _payload = _response = _message = _level = _exception =  string.Empty;
+        _headers = null;
+
 
         _data = null;
 
