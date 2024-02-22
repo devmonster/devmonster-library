@@ -7,7 +7,7 @@
 		<RootNamespace>Devmonster.Core.LoggerFluent</RootNamespace>
 		<AssemblyName>Devmonster.Core.LoggerFluent</AssemblyName>
 
-		<Version>1.2</Version>
+		<Version>1.2.0</Version>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<Description>LoggerFluent Library</Description>
 		<Company>Devmonster</Company>
