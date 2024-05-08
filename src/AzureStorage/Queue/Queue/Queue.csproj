@@ -6,7 +6,7 @@
 		<RootNamespace>Devmonster.AzureStorage.Queue</RootNamespace>
 		<RepositoryType>git</RepositoryType>	
 		<Nullable>disable</Nullable>		
-		<Version>1.0.0</Version>
+		<Version>1.1.0</Version>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<AssemblyName>Devmonster.AzureStorage.Queue</AssemblyName>
 		<Description>Library for connecting to an Azure Queue</Description>
