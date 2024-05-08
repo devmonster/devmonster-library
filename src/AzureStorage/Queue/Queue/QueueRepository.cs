@@ -22,6 +22,10 @@ public interface IQueueRepository
     /// <returns></returns>
     Task AddMessageQueueAsync<T>(string queueName, T queueBody);
 
+    Task AddMessageQueueAsync<T>(string queueName, T queueBody, TimeSpan? visibilitySpan);
+
+    Task AddMessageQueueAsync<T>(string queueName, T queueBody, TimeSpan? visibilitySpan, TimeSpan? timeToLive);
+
     /// <summary>
     /// Receives one message in the front of the queue as Type <typeparamref name="T"/> and permanently removes the message
     /// </summary>
@@ -89,6 +93,33 @@ public class QueueRepository : IQueueRepository
         {
             string queuePayload = JsonConvert.SerializeObject(queueBody);
             await queueClient.SendMessageAsync(Convert.ToBase64String(Encoding.UTF8.GetBytes(queuePayload)));
+        }
+    }
+
+    public async Task AddMessageQueueAsync<T>(string queueName, T queueBody, TimeSpan? visibilitySpan)
+    {
+        QueueClient queueClient = GetQueueClient(queueName);
+
+        queueClient.CreateIfNotExists();
+
+        if (queueClient.Exists())
+        {
+            string queuePayload = JsonConvert.SerializeObject(queueBody);
+            await queueClient.SendMessageAsync(Convert.ToBase64String(Encoding.UTF8.GetBytes(queuePayload)), visibilitySpan);
+        }
+    }
+
+
+    public async Task AddMessageQueueAsync<T>(string queueName, T queueBody, TimeSpan? visibilitySpan, TimeSpan? timeToLive)
+    {
+        QueueClient queueClient = GetQueueClient(queueName);
+
+        queueClient.CreateIfNotExists();
+
+        if (queueClient.Exists())
+        {
+            string queuePayload = JsonConvert.SerializeObject(queueBody);
+            await queueClient.SendMessageAsync(Convert.ToBase64String(Encoding.UTF8.GetBytes(queuePayload)), visibilitySpan, timeToLive);
         }
     }
 
@@ -169,4 +200,6 @@ public class QueueRepository : IQueueRepository
 
         return queueClient;
     }
+
+
 }
