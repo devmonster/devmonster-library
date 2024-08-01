@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+		<TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
 		<ImplicitUsings>enable</ImplicitUsings>		
 		<RootNamespace>Devmonster.AzureStorage.Queue</RootNamespace>
 		<RepositoryType>git</RepositoryType>	
 		<Nullable>disable</Nullable>		
-		<Version>1.1.0</Version>
+		<Version>1.2.0</Version>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<AssemblyName>Devmonster.AzureStorage.Queue</AssemblyName>
 		<Description>Library for connecting to an Azure Queue</Description>
@@ -17,9 +17,9 @@
 
 
 	<ItemGroup>
-		<PackageReference Include="Azure.Storage.Common" Version="12.12.0" />
-		<PackageReference Include="Azure.Storage.Queues" Version="12.11.1" />
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="Azure.Storage.Common" Version="12.20.1" />
+		<PackageReference Include="Azure.Storage.Queues" Version="12.19.1" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 	</ItemGroup>
 
 

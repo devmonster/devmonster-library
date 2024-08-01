@@ -22,8 +22,25 @@ public interface IQueueRepository
     /// <returns></returns>
     Task AddMessageQueueAsync<T>(string queueName, T queueBody);
 
+    /// <summary>
+    /// Adds a new serialized Type of <typeparamref name="T"/> message to the back of the Queue
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="queueName">Name of the Queue to use</param>
+    /// <param name="queueBody">Message that will be serialized</param>
+    /// <param name="visibilitySpan">TimeSpan of when the Item will be visible. Passing null makes the item visible immediately.</param>
+    /// <returns></returns>
     Task AddMessageQueueAsync<T>(string queueName, T queueBody, TimeSpan? visibilitySpan);
 
+    /// <summary>
+    /// Adds a new serialized Type of <typeparamref name="T"/> message to the back of the Queue
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="queueName">Name of the Queue to use</param>
+    /// <param name="queueBody">Message that will be serialized</param>
+    /// <param name="visibilitySpan">TimeSpan of when the Item will be visible. Passing null makes the item visible immediately.</param>
+    /// <param name="timeToLive">TimeSpan of when the Item will expire</param>
+    /// <returns></returns>
     Task AddMessageQueueAsync<T>(string queueName, T queueBody, TimeSpan? visibilitySpan, TimeSpan? timeToLive);
 
     /// <summary>
@@ -63,6 +80,13 @@ public interface IQueueRepository
     /// <param name="queueName">Queue name to use</param>
     /// <returns><seealso cref="QueueClient"/> instance</returns>
     QueueClient GetQueueClient(string queueName);
+
+    /// <summary>
+    /// Get the approximate message count of the queue
+    /// </summary>
+    /// <param name="queueName">Queue name to query</param>
+    /// <returns></returns>
+    Task<int> GetApproximateMessageCount(string queueName);
 }
 
 /// <inheritdoc/>     
@@ -201,5 +225,17 @@ public class QueueRepository : IQueueRepository
         return queueClient;
     }
 
+    /// <summary>
+    /// Get the approximate message count of the queue
+    /// </summary>
+    /// <param name="queueName">Queue name to query</param>
+    /// <returns></returns>
+    public async Task<int> GetApproximateMessageCount(string queueName)
+    {
+        QueueClient queueClient = GetQueueClient(queueName);
 
+        QueueProperties properties = await queueClient.GetPropertiesAsync();
+
+        return properties.ApproximateMessagesCount;
+    }
 }
