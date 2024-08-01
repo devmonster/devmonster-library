@@ -87,6 +87,13 @@ public interface IQueueRepository
     /// <param name="queueName">Queue name to query</param>
     /// <returns></returns>
     Task<int> GetApproximateMessageCount(string queueName);
+
+    /// <summary>
+    /// Clears all items in a queue
+    /// </summary>
+    /// <param name="queueName">The queue name to clear</param>
+    /// <returns></returns>
+    Task ClearQueueAsync(string queueName);
 }
 
 /// <inheritdoc/>     
@@ -237,5 +244,12 @@ public class QueueRepository : IQueueRepository
         QueueProperties properties = await queueClient.GetPropertiesAsync();
 
         return properties.ApproximateMessagesCount;
+    }
+
+    public async Task ClearQueueAsync(string queueName)
+    {
+        QueueClient queueClient = GetQueueClient(queueName);
+
+        await queueClient.ClearMessagesAsync();
     }
 }
