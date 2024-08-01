@@ -17,7 +17,7 @@ public partial class QueueTests
 
             Assert.True(data is not null);
         }
-        catch (Exception )
+        catch (Exception)
         {
             Assert.True(false);
         }
@@ -44,5 +44,27 @@ public partial class QueueTests
             Assert.True(false);
         }
 
+    }
+
+    [Fact]
+    public async Task GetQueueItemCount()
+    {
+        var config = new TestOptions();
+        Startup.GetIConfigurationRoot().Bind(config);
+
+        IQueueRepository queueRepository = new QueueRepository();
+        queueRepository.SetConnectionString(config.ConnectionString);
+
+        CustomerEntity customer = new()
+        {
+            Name = name,
+            Age = age,
+            Email = email
+        };
+        
+        await queueRepository.AddMessageQueueAsync(queueName, customer);
+        var items = await queueRepository.GetApproximateMessageCount(queueName);
+
+        Assert.True(items > 0);
     }
 }
