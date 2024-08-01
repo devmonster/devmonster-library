@@ -47,6 +47,21 @@ public partial class QueueTests
     }
 
     [Fact]
+    public async Task ClearQueueItems()
+    {
+        var config = new TestOptions();
+        Startup.GetIConfigurationRoot().Bind(config);
+
+        IQueueRepository queueRepository = new QueueRepository();
+        queueRepository.SetConnectionString(config.ConnectionString);
+
+        await queueRepository.ClearQueueAsync(queueName);
+
+        var itemCount = await queueRepository.GetApproximateMessageCount(queueName);
+        Assert.True(itemCount == 0);
+    }
+
+    [Fact]
     public async Task GetQueueItemCount()
     {
         var config = new TestOptions();
@@ -54,6 +69,8 @@ public partial class QueueTests
 
         IQueueRepository queueRepository = new QueueRepository();
         queueRepository.SetConnectionString(config.ConnectionString);
+
+        await queueRepository.ClearQueueAsync(queueName);
 
         CustomerEntity customer = new()
         {
